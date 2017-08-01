@@ -8,19 +8,36 @@ namespace Darts
 {
     public class Dart
     {
-        public Random Random { get; set; }
+        public int HitSection { get; set; }
+        public bool Bullseye { get; set; }
+        public string Ring { get; set; }
 
-        private int randomInt;
-        public int RandomInt
+        public Dart()
         {
-            get { return randomInt; }
-            set {
-                int RandomInt = Random.Next();
+            this.HitSection = 21;
+            this.Bullseye = false;
+            this.Ring = "None";
+        }
 
-                if (RandomInt <= 20 || RandomInt >= 0)
-                    randomInt = RandomInt;
-                else
-                    throw new Exception();
+        public void Throw(Random random)
+        {
+            HitSection = random.Next(0, 21); // 0 = bullseye
+
+            // 1 = inner ring (5% chance); 2 = outer ring (5% chance);
+            // If bullseye [50% / 50% chance]:
+            // (1 -> 10) inner ring *OR* (11 -> 20) = outer ring
+            int ringNumber = random.Next(1, 21);
+
+            if (HitSection > 0)
+            {
+                if (ringNumber == 1) Ring = "inner";
+                if (ringNumber == 2) Ring = "outer";
+            }
+            else if (HitSection == 0)
+            {
+                Bullseye = true;
+                if (ringNumber <= 10) Ring = "inner";
+                else Ring = "outer";
             }
         }
     }
