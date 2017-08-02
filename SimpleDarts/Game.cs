@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using ThrowDart;
+using System.Web.UI;
+
 
 namespace SimpleDarts
 {
@@ -23,16 +25,24 @@ namespace SimpleDarts
             this.Random = new Random();
         }
 
-        private void PlayOneGame()
+        public void PlayOneGame()
         {
-            Player1Score += TakeATurn();
-            Player2Score += TakeATurn();
-
+            while ((Player1Score < 300) && (Player2Score < 300))
+            {
+                Player1Score += TakeATurn();
+                Player2Score += TakeATurn();
+            }
         }
 
         int TakeATurn()
         {
-            int[] scoreOneTurn = new int[] { ThrowOneDart(), ThrowOneDart(), ThrowOneDart() };
+            int[] scoreOneTurn = new int[]
+            {
+                ThrowOneDart(),
+                ThrowOneDart(),
+                ThrowOneDart()
+            };
+
             return scoreOneTurn.Sum();
         }
 
@@ -40,8 +50,11 @@ namespace SimpleDarts
         {
             Dart dart = new Dart();
             Score score = new Score();
+
             dart.Throw(Random);
-            int scoreOneThrow = score.CalculateScore(dart);
+            score.CalculateScore(dart);
+
+            int scoreOneThrow = score.HitScore;
             return scoreOneThrow;
         }
     }

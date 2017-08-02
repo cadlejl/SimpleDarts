@@ -31,12 +31,12 @@ namespace SimpleDarts {
         protected global::System.Web.UI.WebControls.Button PlayButton;
         
         /// <summary>
-        /// resultLabel control.
+        /// ResultLabel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label resultLabel;
+        protected global::System.Web.UI.WebControls.Label ResultLabel;
     }
 }

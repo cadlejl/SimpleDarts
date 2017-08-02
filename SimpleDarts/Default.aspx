@@ -12,7 +12,7 @@
             <asp:Button ID="PlayButton" runat="server" Text="Play" OnClick="PlayButton_Click1" />
             <br />
             <br />
-            <asp:Label ID="resultLabel" runat="server"></asp:Label>
+            <asp:Label ID="ResultLabel" runat="server"></asp:Label>
         </div>
     </form>
 </body>

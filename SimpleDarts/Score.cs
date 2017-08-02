@@ -14,6 +14,7 @@ namespace SimpleDarts
         {
             this.HitScore = 0;
         }
+
         public void CalculateScore(Dart dart)
         {
             if (dart.Bullseye == true)
@@ -24,7 +25,10 @@ namespace SimpleDarts
             }
             else if (dart.Bullseye == false)
             {
+                if (!(dart.HitSection > 0)) throw new Exception();
                 if (dart.Ring == "inner") HitScore = (dart.HitSection * 3);
+                else if (dart.Ring == "outer") HitScore = (dart.HitSection * 2);
+                else HitScore = dart.HitSection;
             }
         }
     }
