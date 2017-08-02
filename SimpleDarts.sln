@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.26430.16
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleDarts", "SimpleDarts\SimpleDarts.csproj", "{5FA9842B-B3F0-4D64-B92C-C0BABE30FB64}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThrowDart", "ThrowDart\ThrowDart.csproj", "{9475659E-FD76-4326-B925-586D4F954366}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Darts", "ThrowDart\Darts.csproj", "{9475659E-FD76-4326-B925-586D4F954366}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

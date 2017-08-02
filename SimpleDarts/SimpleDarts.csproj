@@ -98,9 +98,9 @@
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ThrowDart\ThrowDart.csproj">
+    <ProjectReference Include="..\ThrowDart\Darts.csproj">
       <Project>{9475659e-fd76-4326-b925-586d4f954366}</Project>
-      <Name>ThrowDart</Name>
+      <Name>Darts</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

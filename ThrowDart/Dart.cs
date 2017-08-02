@@ -1,43 +1,51 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace ThrowDart
+namespace Darts
 {
     public class Dart
     {
         public int HitSection { get; set; }
         public bool Bullseye { get; set; }
         public string Ring { get; set; }
+        //private Random _random;
 
         public Dart()
         {
             this.HitSection = 21;
             this.Bullseye = false;
-            this.Ring = "None";
+            this.Ring = "undefined";
+           // _random = new Random();
         }
 
         public void Throw(Random random)
         {
             HitSection = random.Next(0, 21); // 0 = bullseye
 
-            // 1 = inner ring (5% chance); 2 = outer ring (5% chance);
-            // If bullseye [50% / 50% chance]:
-            // (1 -> 10) inner ring *OR* (11 -> 20) = outer ring
+            // 1 = inner ring (5% chance); 2 = outer ring (5% chance).
+            // If bullseye, determine inner or outer [40% / 60% chance]:
+            // (1 -> 8) inner ring *OR* (9 -> 20) = outer ring
             int ringNumber = random.Next(1, 21);
 
-            if (HitSection > 0)
-            {
-                if (ringNumber == 1) Ring = "inner";
-                if (ringNumber == 2) Ring = "outer";
-            }
-            else if (HitSection == 0)
+            if (HitSection > 0) SetRingProperty(1, ringNumber);
+            else
             {
                 Bullseye = true;
-                if (ringNumber <= 10) Ring = "inner";
-                else Ring = "outer";
+                SetRingProperty(2, ringNumber);
+            }
+        }
+
+        private void SetRingProperty(int key, int ringNumber)
+        {
+            switch (key)
+            {
+                case 1:
+                    if (ringNumber == 1) Ring = "inner"; // Tripple
+                    if (ringNumber == 2) Ring = "outer"; // Double
+                    break;
+                case 2:
+                    if (ringNumber <= 8) Ring = "inner"; // 50 Points
+                    else Ring = "outer"; // 25 Points
+                    break;
             }
         }
     }

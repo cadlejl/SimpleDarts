@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-using ThrowDart;
-using System.Web.UI;
+using Darts;
 
 
 namespace SimpleDarts
@@ -14,7 +11,7 @@ namespace SimpleDarts
         public string Player2 { get; set; }
         public int Player1Score { get; set; }
         public int Player2Score { get; set; }
-        public Random Random { get; set; }
+        private Random _random;
 
         public Game()
         {
@@ -22,10 +19,10 @@ namespace SimpleDarts
             this.Player2 = "Player 2";
             this.Player1Score = 0;
             this.Player2Score = 0;
-            this.Random = new Random();
+            this._random = new Random();
         }
 
-        public void PlayOneGame()
+        public void PlayOneGame(/*int Player1Score, int Player2Score*/)
         {
             while ((Player1Score < 300) && (Player2Score < 300))
             {
@@ -51,7 +48,7 @@ namespace SimpleDarts
             Dart dart = new Dart();
             Score score = new Score();
 
-            dart.Throw(Random);
+            dart.Throw(_random);
             score.CalculateScore(dart);
 
             int scoreOneThrow = score.HitScore;

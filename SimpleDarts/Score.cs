@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using ThrowDart;
+using Darts;
 
 namespace SimpleDarts
 {
@@ -10,25 +7,27 @@ namespace SimpleDarts
     {
         public int HitScore { get; set; }
 
-        public Score()
-        {
-            this.HitScore = 0;
-        }
+        public Score() { this.HitScore = 0; }
 
         public void CalculateScore(Dart dart)
         {
-            if (dart.Bullseye == true)
+            if (dart.Bullseye == false) SetHitScoreProperty(1, dart);
+            else SetHitScoreProperty(2, dart);
+        }
+
+        private void SetHitScoreProperty(int key, Dart dart)
+        {
+            switch (key)
             {
-                if (dart.Ring == "inner") HitScore = 50;
-                else if (dart.Ring == "outer") HitScore = 25;
-                else throw new Exception();
-            }
-            else if (dart.Bullseye == false)
-            {
-                if (!(dart.HitSection > 0)) throw new Exception();
-                if (dart.Ring == "inner") HitScore = (dart.HitSection * 3);
-                else if (dart.Ring == "outer") HitScore = (dart.HitSection * 2);
-                else HitScore = dart.HitSection;
+                case 1:
+                    if (dart.Ring == "inner") HitScore = (dart.HitSection * 3);
+                    else if (dart.Ring == "outer") HitScore = (dart.HitSection * 2);
+                    else HitScore = dart.HitSection;
+                    break;
+                case 2:
+                    if (dart.Ring == "inner") HitScore = 50;
+                    else HitScore = 25;
+                    break;
             }
         }
     }
