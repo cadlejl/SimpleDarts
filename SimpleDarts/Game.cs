@@ -11,7 +11,7 @@ namespace SimpleDarts
         public string Player2 { get; set; }
         public int Player1Score { get; set; }
         public int Player2Score { get; set; }
-        private Random _random;
+        private Random _random; // Random class instantiation needs review https://courses.devu.com/courses/take/cs-fundamentals-via-asp-net-web-applications/lessons/243622-cs-asp-045-solution-challengesimpledarts-solution
 
         public Game()
         {
@@ -19,10 +19,10 @@ namespace SimpleDarts
             this.Player2 = "Player 2";
             this.Player1Score = 0;
             this.Player2Score = 0;
-            this._random = new Random();
+            this._random = new Random(); // Random class instantiation needs review
         }
 
-        public void PlayOneGame(/*int Player1Score, int Player2Score*/)
+        public void PlayOneGame()
         {
             while ((Player1Score < 300) && (Player2Score < 300))
             {
@@ -48,7 +48,7 @@ namespace SimpleDarts
             Dart dart = new Dart();
             Score score = new Score();
 
-            dart.Throw(_random);
+            dart.Throw(_random); // Random class instantiation needs review
             score.CalculateScore(dart);
 
             int scoreOneThrow = score.HitScore;

@@ -5,23 +5,28 @@ namespace SimpleDarts
     public partial class Default : System.Web.UI.Page
     {
         public Game Game { get; set; }
-        //public Game PlayOneGame { get; set; }
+        //public Game PlayOneGame() { get; set; }
         public string Player1 { get; set; }
         public string Player2 { get; set; }
         public int Player1Score { get; set; }
         public int Player2Score { get; set; }
         public String Winner { get; set; }
 
-        //Tried to make a constructor, to disastrous effect
-        //public Default()
-        //{
-        //    this.Game = new Game();
-        //    this.Player1 = Game.Player1;
-        //    this.Player2 = Game.Player2;
-        //    //this.Player1Score = 0;//Game.Player1Score;
-        //    //this.Player2Score = 0;//Game.Player2Score;
-        //    this.Winner = "";
-        //}
+        //Game PlayOneGame = PlayOneGame;
+
+        // Tried various ways to use properties to eliminate the need
+        // to instantiate new Game() in PlayButton event. May revisit
+        // and refactor at a later date.
+        public Default()
+        {
+            this.Game = new Game();
+            //this.PlayOneGame() = PlayOneGame();
+            this.Player1 = Game.Player1;
+            this.Player2 = Game.Player2;
+            //this.Player1Score = 0;//Game.Player1Score;
+            //this.Player2Score = 0;//Game.Player2Score;
+            this.Winner = "";
+        }
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -31,7 +36,7 @@ namespace SimpleDarts
         {
             Game Game = new Game();
 
-            Game.PlayOneGame(/*Player1Score, Player2Score*/);
+            Game.PlayOneGame();
 
             Player1 = Game.Player1;
             Player2 = Game.Player2;
@@ -43,7 +48,6 @@ namespace SimpleDarts
 
         private void ShowResults()
         {
-            String Winner = "";
             if (Player1Score > Player2Score) Winner = Player1 + " Wins!";
             else if (Player1Score < Player2Score) Winner = Player2 + " Wins!";
             else Winner = "It's a tie!";

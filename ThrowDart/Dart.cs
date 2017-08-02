@@ -7,17 +7,17 @@ namespace Darts
         public int HitSection { get; set; }
         public bool Bullseye { get; set; }
         public string Ring { get; set; }
-        //private Random _random;
+        //private Random _random; // Random class instantiation needs review
 
         public Dart()
         {
             this.HitSection = 21;
             this.Bullseye = false;
             this.Ring = "undefined";
-           // _random = new Random();
+            // _random = new Random(); // Random class instantiation needs review
         }
 
-        public void Throw(Random random)
+        public void Throw(Random random) // Random class instantiation needs review
         {
             HitSection = random.Next(0, 21); // 0 = bullseye
 
