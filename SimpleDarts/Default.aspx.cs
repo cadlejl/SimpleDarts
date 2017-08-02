@@ -14,7 +14,7 @@ namespace SimpleDarts
 
         }
 
-        protected void playButton_Click(object sender, EventArgs e)
+        protected void PlayButton_Click1(object sender, EventArgs e)
         {
 
         }
